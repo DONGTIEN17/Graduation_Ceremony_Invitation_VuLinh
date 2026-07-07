@@ -3,49 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Mời Lễ Tốt Nghiệp</title>
+    <title>Thiệp Mời Lễ Tốt Nghiệp - Nguyễn Ngọc Thảo Vân</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* CSS Cơ bản để trang web nhìn gọn gàng */
-        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
-        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        h2 { color: #333; }
-        input, select, textarea { width: 100%; margin-top: 15px; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 15px; }
-        button { width: 100%; margin-top: 20px; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; }
-        button:hover { background: #0056b3; }
-        button:disabled { background: #aaa; cursor: not-allowed; }
-        #success-msg { display: none; color: green; margin-top: 15px; font-weight: bold; }
+        /* CSS cho giao diện thiệp */
+        body { font-family: 'Lora', serif; background-color: #f7f7f7; display: flex; justify-content: center; align-items: flex-start; padding: 30px; margin: 0; color: #333; line-height: 1.6; }
+        .invitation-container { background-color: #fff; width: 100%; max-width: 650px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 50px 40px; position: relative; border: 1.5px solid #e0e0e0; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        /* Cột bên trái - Thông tin và Form */
+        .left-column { display: flex; flex-direction: column; }
+        .logo-header { display: flex; align-items: center; margin-bottom: 25px; }
+        .logo-header img { width: 55px; height: auto; margin-right: 15px; }
+        .school-names { display: flex; flex-direction: column; }
+        .school-name-vn { font-weight: bold; font-size: 16px; color: #102e5c; margin-bottom: -4px; }
+        .school-name-en { font-size: 11px; color: #666; font-style: italic; }
+        .grad-year { position: absolute; top: 10px; right: 10px; font-size: 10px; color: #999; }
+
+        .main-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px; color: #102e5c; text-transform: uppercase; margin-top: 10px; margin-bottom: 3px; letter-spacing: 0.5px; }
+        .title-sub { font-size: 18px; color: #555; margin-bottom: 30px; letter-spacing: 1px; }
+
+        .details { margin-bottom: 35px; }
+        .detail-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-size: 14px; }
+        .icon { width: 22px; margin-right: 12px; flex-shrink: 0; }
+        .icon-circle { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #102e5c; margin-top: 4px; position: relative; }
+        .icon-circle:before { content:''; position: absolute; top: 3px; left: 3px; width: 4px; height: 4px; background: #102e5c; border-radius: 50%; }
+        .detail-item strong { display: block; font-weight: bold; color: #102e5c; text-transform: uppercase; margin-bottom: 2px; }
+        
+        /* Cột bên phải - Ruy băng và Ảnh */
+        .right-column { display: flex; flex-direction: column; align-items: flex-end; position: relative; }
+        .k23-ribbon { position: absolute; top: 0px; right: -15px; width: 40px; height: 30px; background: #c5a059; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 12px; border-radius: 2px 0 0 2px; transform: rotate(10deg); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .grad-photo-container { position: relative; width: 160px; height: 230px; margin-top: 70px; margin-right: 20px; z-index: 2; border: 2.5px solid #c5a059; border-radius: 50%; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        /* Tự động tạo ảnh giả lập nếu không có file ảnh */
+        .grad-photo { width: 100%; height: 100%; background: linear-gradient(135deg, #eee, #ccc); object-fit: cover; border-radius: 50%; position: relative; }
+        .grad-photo:after { content: 'ẢNH CỦA BẠN'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-weight: bold; font-size: 14px; text-align: center; line-height: 1.2; }
+
+        .vertical-ribbon { position: absolute; top: 0px; right: 0px; width: 65px; height: 100%; min-height: 500px; background: linear-gradient(to bottom, #102e5c 0%, #0d2a54 100%); z-index: 1; border-radius: 0 0 10px 10px; display: flex; justify-content: space-around; padding: 25px 0; color: #fff; box-shadow: -5px 0 15px rgba(0,0,0,0.15); transform: rotate(2deg); }
+        .ribbon-name { font-family: 'Playfair Display', serif; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 24px; color: #fff; letter-spacing: 0.5px; font-weight: normal; margin-left: -5px; }
+        .ribbon-major { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; writing-mode: vertical-rl; transform: rotate(180deg); color: #c5a059; margin-left: 3px; font-weight: normal; }
+        .ribbon-grad-photo-link { position: absolute; top: 120px; left: 15px; width: 35px; height: 35px; border-radius: 50%; border: 1.5px solid #c5a059; display: flex; align-items: center; justify-content: center; }
+        .ribbon-grad-photo-link .icon-circle { border-color: #c5a059; width: 12px; height: 12px; }
+        .ribbon-grad-photo-link .icon-circle:before { background: #c5a059; }
+
+        /* Phần đóng thiệp */
+        .closing-message-container { grid-column: 1 / -1; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e0e0e0; text-align: center; }
+        .closing-message { font-size: 13px; color: #666; font-style: italic; max-width: 450px; margin: 0 auto; letter-spacing: 0.3px; position: relative; padding: 0 15px; }
+        .closing-message::before { content: '❤'; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); color: #c5a059; font-size: 14px; }
+
+        /* Form RSVP */
+        .rsvp-form-container { margin-top: 25px; background: #fdfdfd; padding: 20px; border-radius: 8px; border: 1px dashed #c5a059; display: flex; flex-direction: column; }
+        .rsvp-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #102e5c; text-transform: uppercase; margin-bottom: 15px; text-align: center; letter-spacing: 1px; font-weight: 600; }
+        .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; font-size: 13px; }
+        .rsvp-form select { font-style: italic; color: #888; }
+        .rsvp-form input[type="text"], .rsvp-form input[type="tel"] { color: #333; font-style: normal; }
+        .rsvp-form button { width: 100%; padding: 10px; background: #102e5c; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.2s; }
+        .rsvp-form button:hover { background-color: #0d2a54; }
+        .rsvp-form button:disabled { background-color: #aaa; cursor: not-allowed; }
+        #success-msg { display: none; color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 13px; text-align: center; font-weight: bold; }
+    
+        /* Responsive cho thiết bị di động */
+        @media (max-width: 600px) {
+            .invitation-container { grid-template-columns: 1fr; padding: 30px 20px; gap: 20px; text-align: center; }
+            .logo-header { justify-content: center; }
+            .right-column { align-items: center; order: -1; }
+            .vertical-ribbon { display: none; }
+            .k23-ribbon { right: 10px; }
+            .grad-photo-container { margin-top: 30px; margin-right: 0; width: 140px; height: 140px; border-radius: 50%; }
+            .vertical-ribbon-mobile { display: flex; width: 100%; height: auto; padding: 10px 0; margin-top: 10px; text-align: center; font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; background: #102e5c; justify-content: center; font-weight: normal; margin-bottom: 20px; }
+            .vertical-ribbon-mobile-minor { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #c5a059; margin-left: 10px; font-weight: normal; }
+            .rsvp-form-container { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>Xác Nhận Tham Dự<br>Lễ Tốt Nghiệp 🎓</h2>
-        <form id="rsvp-form">
-            <!-- Thuộc tính name="" phải khớp với chữ e.parameter trong Apps Script -->
-            <input type="text" name="name" placeholder="Họ và Tên của bạn" required>
+    <div class="invitation-container">
+        <span class="grad-year">1961</span>
+        
+        <div class="left-column">
+            <div class="logo-header">
+                <img src="https://dongtien17.github.io/Graduation_Ceremony_Invitation_VuLinh/image_bav_logo.png" alt="Logo Học viện Ngân hàng" />
+                <div class="school-names">
+                    <span class="school-name-vn">HỌC VIỆN NGÂN HÀNG</span>
+                    <span class="school-name-en">BANKING ACADEMY OF VIETNAM</span>
+                </div>
+            </div>
+
+            <h1 class="main-title">LỄ TỐT NGHIỆP</h1>
+            <p class="title-sub">CỬ NHÂN 2026</p>
+
+            <div class="details">
+                <div class="detail-item">
+                    <div class="icon">
+                        <span class="icon-circle"></span>
+                    </div>
+                    <div><strong>THỜI GIAN</strong> 15:00 - 17:00, Thứ Bảy, ngày 23.05.2026</div>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">
+                        <span class="icon-circle"></span>
+                    </div>
+                    <div><strong>ĐỊA ĐIỂM</strong> Học viện Ngân hàng<br>Số 12, P. Chùa Bộc, Đống Đa</div>
+                </div>
+                <div class="detail-item">
+                    <div class="icon">
+                        <span class="icon-circle"></span>
+                    </div>
+                    <div><strong>LIÊN HỆ</strong> 0961 422 885</div>
+                </div>
+            </div>
+
+            <div class="vertical-ribbon-mobile" style="display:none;">
+                Nguyễn Ngọc Thảo Vân
+                <span class="vertical-ribbon-mobile-minor">ACCOUNTING & AUDITING</span>
+            </div>
+
+            <div class="rsvp-form-container">
+                <h3 class="rsvp-title">XÁC NHẬN THAM DỰ</h3>
+                <form id="rsvp-form" class="rsvp-form">
+                    <input type="text" name="name" placeholder="Họ và Tên của bạn" required>
+                    <input type="tel" name="phone" placeholder="Số điện thoại của bạn" required>
+                    <select name="status" required>
+                        <option value="" disabled selected>Bạn có tham gia được không?</option>
+                        <option value="Có">Có, chắc chắn mình sẽ đến!</option>
+                        <option value="Không">Rất tiếc, mình không thể đến!</option>
+                    </select>
+                    <textarea name="message" rows="3" placeholder="Lời nhắn hoặc lời chúc cho Vân..."></textarea>
+                    <button type="submit" id="submit-btn">GỬI XÁC NHẬN</button>
+                </form>
+                <p id="success-msg">Cảm ơn bạn! Vân đã nhận được thông tin.</p>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="k23-ribbon">K23</div>
             
-            <input type="tel" name="phone" placeholder="Số điện thoại liên hệ" required>
-            
-            <select name="status" required>
-                <option value="" disabled selected>Bạn có tham gia được không?</option>
-                <option value="Có tham gia">Chắc chắn rồi, mình sẽ đến!</option>
-                <option value="Không tham gia">Tiếc quá, mình bận mất rồi!</option>
-            </select>
-            
-            <textarea name="message" rows="3" placeholder="Để lại lời nhắn hoặc lời chúc cho mình nhé..."></textarea>
-            
-            <button type="submit" id="submit-btn">Gửi Xác Nhận</button>
-        </form>
-        <p id="success-msg">Cảm ơn bạn! Thông tin đã được gửi thành công.</p>
+            <div class="grad-photo-container">
+                <img src="avatar.png" alt="Ảnh chân dung Nguyễn Ngọc Thảo Vân" class="grad-photo" />
+            </div>
+
+            <div class="vertical-ribbon">
+                <div class="ribbon-grad-photo-link">
+                    <span class="icon-circle"></span>
+                </div>
+                <div class="ribbon-name">Nguyễn Ngọc Thảo Vân</div>
+                <div class="ribbon-major">ACCOUNTING & AUDITING</div>
+            </div>
+        </div>
+
+        <div class="closing-message-container">
+            <p class="closing-message">Sự hiện diện của người thân thương sẽ là món quà tinh thần ý nghĩa nhất trong khoảnh khắc đặc biệt này.</p>
+        </div>
     </div>
 
     <script>
-        // BƯỚC QUAN TRỌNG: Dán link Web App bạn vừa copy ở Bước 3 vào trong dấu ngoặc kép bên dưới
+        // SCRIPT XỬ LÝ RSVP - GIỐNG NHƯ BẠN ĐÃ LÀM
+        // BẮT BUỘC: Dán đường link Web App bạn đã copy vào trong dấu ngoặc kép bên dưới
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzYC2uAZNX3V8pYDEdPyQMK-4FrYuVRAUZjZNsDrIKRDnbHeGoz3bzxMkWZzLF06p5P/exec';
         
         const form = document.getElementById('rsvp-form');
         const submitBtn = document.getElementById('submit-btn');
         const successMsg = document.getElementById('success-msg');
+
+        // Thêm responsive JS nhỏ để xử lý ruy băng mobile
+        const checkMobile = () => {
+            const width = window.innerWidth;
+            const mobileRibbon = document.querySelector('.vertical-ribbon-mobile');
+            if (width <= 600) {
+                mobileRibbon.style.display = 'flex';
+            } else {
+                mobileRibbon.style.display = 'none';
+            }
+        };
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
 
         form.addEventListener('submit', e => {
             e.preventDefault(); // Ngăn trình duyệt tự tải lại trang
@@ -61,7 +191,7 @@
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     successMsg.style.display = "block"; // Hiện thông báo thành công
-                    form.reset(); // Xóa trắng form
+                    form.style.display = "none"; // Ẩn form đi
                     submitBtn.disabled = false;
                     submitBtn.innerText = "Gửi Xác Nhận";
                 })
