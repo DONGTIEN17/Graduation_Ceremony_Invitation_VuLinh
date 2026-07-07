@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Mời Lễ Tốt Nghiệp - Nguyễn Ngọc Thảo Vân</title>
+    <title>Graduation Invitation - Nguyen Tien Dong</title>
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         /* CSS cho giao diện thiệp */
@@ -19,7 +20,7 @@
         .school-name-en { font-size: 11px; color: #666; font-style: italic; }
         .grad-year { position: absolute; top: 10px; right: 10px; font-size: 10px; color: #999; }
 
-        .main-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px; color: #102e5c; text-transform: uppercase; margin-top: 10px; margin-bottom: 3px; letter-spacing: 0.5px; }
+        .main-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 26px; color: #102e5c; text-transform: uppercase; margin-top: 10px; margin-bottom: 3px; letter-spacing: 0.5px; }
         .title-sub { font-size: 18px; color: #555; margin-bottom: 30px; letter-spacing: 1px; }
 
         .details { margin-bottom: 35px; }
@@ -33,13 +34,12 @@
         .right-column { display: flex; flex-direction: column; align-items: flex-end; position: relative; }
         .k23-ribbon { position: absolute; top: 0px; right: -15px; width: 40px; height: 30px; background: #c5a059; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 12px; border-radius: 2px 0 0 2px; transform: rotate(10deg); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .grad-photo-container { position: relative; width: 160px; height: 230px; margin-top: 70px; margin-right: 20px; z-index: 2; border: 2.5px solid #c5a059; border-radius: 50%; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        /* Tự động tạo ảnh giả lập nếu không có file ảnh */
         .grad-photo { width: 100%; height: 100%; background: linear-gradient(135deg, #eee, #ccc); object-fit: cover; border-radius: 50%; position: relative; }
-        .grad-photo:after { content: 'ẢNH CỦA BẠN'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-weight: bold; font-size: 14px; text-align: center; line-height: 1.2; }
+        .grad-photo:after { content: 'YOUR PHOTO'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #777; font-weight: bold; font-size: 14px; text-align: center; line-height: 1.2; }
 
         .vertical-ribbon { position: absolute; top: 0px; right: 0px; width: 65px; height: 100%; min-height: 500px; background: linear-gradient(to bottom, #102e5c 0%, #0d2a54 100%); z-index: 1; border-radius: 0 0 10px 10px; display: flex; justify-content: space-around; padding: 25px 0; color: #fff; box-shadow: -5px 0 15px rgba(0,0,0,0.15); transform: rotate(2deg); }
-        .ribbon-name { font-family: 'Playfair Display', serif; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 24px; color: #fff; letter-spacing: 0.5px; font-weight: normal; margin-left: -5px; }
-        .ribbon-major { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; writing-mode: vertical-rl; transform: rotate(180deg); color: #c5a059; margin-left: 3px; font-weight: normal; }
+        .ribbon-name { font-family: 'Playfair Display', serif; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 22px; color: #fff; letter-spacing: 0.5px; font-weight: normal; margin-left: -5px; }
+        .ribbon-major { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; writing-mode: vertical-rl; transform: rotate(180deg); color: #c5a059; margin-left: 3px; font-weight: normal; }
         .ribbon-grad-photo-link { position: absolute; top: 120px; left: 15px; width: 35px; height: 35px; border-radius: 50%; border: 1.5px solid #c5a059; display: flex; align-items: center; justify-content: center; }
         .ribbon-grad-photo-link .icon-circle { border-color: #c5a059; width: 12px; height: 12px; }
         .ribbon-grad-photo-link .icon-circle:before { background: #c5a059; }
@@ -77,88 +77,92 @@
 <body>
 
     <div class="invitation-container">
-        <span class="grad-year">1961</span>
-        
+        <!-- Cột bên trái -->
         <div class="left-column">
             <div class="logo-header">
-                <img src="https://dongtien17.github.io/Graduation_Ceremony_Invitation_VuLinh/image_bav_logo.png" alt="Logo Học viện Ngân hàng" />
+                <!-- Thay link logo trường của bạn vào đây -->
+                <img src="https://upload.wikimedia.org/wikipedia/vi/1/1a/Logo-Đại-học-Khoa-học-Tự-nhiên.jpg" alt="University Logo" style="border-radius: 50%;" />
                 <div class="school-names">
-                    <span class="school-name-vn">HỌC VIỆN NGÂN HÀNG</span>
-                    <span class="school-name-en">BANKING ACADEMY OF VIETNAM</span>
+                    <span class="school-name-vn">VNU UNIVERSITY OF SCIENCE</span>
+                    <span class="school-name-en">VNU-HUS</span>
                 </div>
             </div>
 
-            <h1 class="main-title">LỄ TỐT NGHIỆP</h1>
-            <p class="title-sub">CỬ NHÂN 2026</p>
+            <h1 class="main-title">GRADUATION CEREMONY</h1>
+            <p class="title-sub">CLASS OF 2026</p>
 
             <div class="details">
                 <div class="detail-item">
                     <div class="icon">
                         <span class="icon-circle"></span>
                     </div>
-                    <div><strong>THỜI GIAN</strong> 15:00 - 17:00, Thứ Bảy, ngày 23.05.2026</div>
+                    <div><strong>TIME</strong> 15:00 - 17:00, Saturday, June 20, 2026</div>
                 </div>
                 <div class="detail-item">
                     <div class="icon">
                         <span class="icon-circle"></span>
                     </div>
-                    <div><strong>ĐỊA ĐIỂM</strong> Học viện Ngân hàng<br>Số 12, P. Chùa Bộc, Đống Đa</div>
+                    <div><strong>VENUE</strong> VNU University of Science<br>334 Nguyen Trai St., Thanh Xuan, Hanoi</div>
                 </div>
                 <div class="detail-item">
                     <div class="icon">
                         <span class="icon-circle"></span>
                     </div>
-                    <div><strong>LIÊN HỆ</strong> 0961 422 885</div>
+                    <div><strong>CONTACT</strong> 0961 422 885</div>
                 </div>
             </div>
 
+            <!-- Mobile ribbon (ẩn trên desktop) -->
             <div class="vertical-ribbon-mobile" style="display:none;">
-                Nguyễn Ngọc Thảo Vân
-                <span class="vertical-ribbon-mobile-minor">ACCOUNTING & AUDITING</span>
+                Nguyen Tien Dong
+                <span class="vertical-ribbon-mobile-minor">ELECTRONIC ENGINEERING & INFORMATICS</span>
             </div>
 
+            <!-- Form RSVP -->
             <div class="rsvp-form-container">
-                <h3 class="rsvp-title">XÁC NHẬN THAM DỰ</h3>
+                <h3 class="rsvp-title">RSVP</h3>
                 <form id="rsvp-form" class="rsvp-form">
-                    <input type="text" name="name" placeholder="Họ và Tên của bạn" required>
-                    <input type="tel" name="phone" placeholder="Số điện thoại của bạn" required>
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <input type="tel" name="phone" placeholder="Your Phone Number" required>
                     <select name="status" required>
-                        <option value="" disabled selected>Bạn có tham gia được không?</option>
-                        <option value="Có">Có, chắc chắn mình sẽ đến!</option>
-                        <option value="Không">Rất tiếc, mình không thể đến!</option>
+                        <option value="" disabled selected>Will you be able to attend?</option>
+                        <option value="Yes">Yes, I'll definitely be there!</option>
+                        <option value="No">Regretfully, I cannot make it.</option>
                     </select>
-                    <textarea name="message" rows="3" placeholder="Lời nhắn hoặc lời chúc cho Vân..."></textarea>
-                    <button type="submit" id="submit-btn">GỬI XÁC NHẬN</button>
+                    <textarea name="message" rows="3" placeholder="Leave a message or wishes for Dong..."></textarea>
+                    <button type="submit" id="submit-btn">CONFIRM ATTENDANCE</button>
                 </form>
-                <p id="success-msg">Cảm ơn bạn! Vân đã nhận được thông tin.</p>
+                <p id="success-msg">Thank you! Dong has received your confirmation.</p>
             </div>
         </div>
 
+        <!-- Cột bên phải -->
         <div class="right-column">
-            <div class="k23-ribbon">K23</div>
+            <div class="k23-ribbon">K67</div>
             
             <div class="grad-photo-container">
-                <img src="avatar.png" alt="Ảnh chân dung Nguyễn Ngọc Thảo Vân" class="grad-photo" />
+                <!-- Tải ảnh của bạn lên đặt tên là avatar.png để thay thế -->
+                <img src="avatar.png" alt="Graduation Photo" class="grad-photo" />
             </div>
 
             <div class="vertical-ribbon">
                 <div class="ribbon-grad-photo-link">
                     <span class="icon-circle"></span>
                 </div>
-                <div class="ribbon-name">Nguyễn Ngọc Thảo Vân</div>
-                <div class="ribbon-major">ACCOUNTING & AUDITING</div>
+                <div class="ribbon-name">Nguyen Tien Dong</div>
+                <div class="ribbon-major">ELECTRONIC ENGINEERING & INFORMATICS</div>
             </div>
         </div>
 
+        <!-- Phần đóng -->
         <div class="closing-message-container">
-            <p class="closing-message">Sự hiện diện của người thân thương sẽ là món quà tinh thần ý nghĩa nhất trong khoảnh khắc đặc biệt này.</p>
+            <p class="closing-message">Your presence will be the most meaningful gift to me in this special moment.</p>
         </div>
     </div>
 
     <script>
-        // SCRIPT XỬ LÝ RSVP - GIỐNG NHƯ BẠN ĐÃ LÀM
         // BẮT BUỘC: Dán đường link Web App bạn đã copy vào trong dấu ngoặc kép bên dưới
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzYC2uAZNX3V8pYDEdPyQMK-4FrYuVRAUZjZNsDrIKRDnbHeGoz3bzxMkWZzLF06p5P/exec';
+        const scriptURL = 'DÁN_LINK_WEB_APP_GOOGLE_CỦA_BẠN_VÀO_ĐÂY';
         
         const form = document.getElementById('rsvp-form');
         const submitBtn = document.getElementById('submit-btn');
@@ -178,11 +182,11 @@
         checkMobile();
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); // Ngăn trình duyệt tự tải lại trang
+            e.preventDefault(); 
             
             // Đổi giao diện nút bấm trong lúc chờ gửi
             submitBtn.disabled = true;
-            submitBtn.innerText = "Đang gửi thông tin...";
+            submitBtn.innerText = "Sending...";
 
             // Lấy dữ liệu từ Form
             const formData = new FormData(form);
@@ -193,12 +197,12 @@
                     successMsg.style.display = "block"; // Hiện thông báo thành công
                     form.style.display = "none"; // Ẩn form đi
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "Gửi Xác Nhận";
+                    submitBtn.innerText = "CONFIRM ATTENDANCE";
                 })
                 .catch(error => {
-                    alert("Có lỗi xảy ra, vui lòng thử lại sau!");
+                    alert("An error occurred, please try again later!");
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "Gửi Xác Nhận";
+                    submitBtn.innerText = "CONFIRM ATTENDANCE";
                 });
         });
     </script>
