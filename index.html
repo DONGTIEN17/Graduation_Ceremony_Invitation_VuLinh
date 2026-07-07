@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Lễ Tốt Nghiệp</title>
+    <style>
+        /* CSS Cơ bản để trang web nhìn gọn gàng */
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #333; }
+        input, select, textarea { width: 100%; margin-top: 15px; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 15px; }
+        button { width: 100%; margin-top: 20px; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #aaa; cursor: not-allowed; }
+        #success-msg { display: none; color: green; margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Xác Nhận Tham Dự<br>Lễ Tốt Nghiệp 🎓</h2>
+        <form id="rsvp-form">
+            <!-- Thuộc tính name="" phải khớp với chữ e.parameter trong Apps Script -->
+            <input type="text" name="name" placeholder="Họ và Tên của bạn" required>
+            
+            <input type="tel" name="phone" placeholder="Số điện thoại liên hệ" required>
+            
+            <select name="status" required>
+                <option value="" disabled selected>Bạn có tham gia được không?</option>
+                <option value="Có tham gia">Chắc chắn rồi, mình sẽ đến!</option>
+                <option value="Không tham gia">Tiếc quá, mình bận mất rồi!</option>
+            </select>
+            
+            <textarea name="message" rows="3" placeholder="Để lại lời nhắn hoặc lời chúc cho mình nhé..."></textarea>
+            
+            <button type="submit" id="submit-btn">Gửi Xác Nhận</button>
+        </form>
+        <p id="success-msg">Cảm ơn bạn! Thông tin đã được gửi thành công.</p>
+    </div>
+
+    <script>
+        // BƯỚC QUAN TRỌNG: Dán link Web App bạn vừa copy ở Bước 3 vào trong dấu ngoặc kép bên dưới
+        const scriptURL = 'DÁN_LINK_WEB_APP_CỦA_BẠN_VÀO_ĐÂY';
+        
+        const form = document.getElementById('rsvp-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Ngăn trình duyệt tự tải lại trang
+            
+            // Đổi giao diện nút bấm trong lúc chờ gửi
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Đang gửi thông tin...";
+
+            // Lấy dữ liệu từ Form
+            const formData = new FormData(form);
+
+            // Gửi dữ liệu đi
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    successMsg.style.display = "block"; // Hiện thông báo thành công
+                    form.reset(); // Xóa trắng form
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Gửi Xác Nhận";
+                })
+                .catch(error => {
+                    alert("Có lỗi xảy ra, vui lòng thử lại sau!");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Gửi Xác Nhận";
+                });
+        });
+    </script>
+</body>
+</html>
